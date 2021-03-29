@@ -499,6 +499,17 @@ func (d *DNSServer) handleQuery(resp dns.ResponseWriter, req *dns.Msg) {
 
 	setEDNS(req, m, ecsGlobal)
 
+	// Trim response to the max size before sending it to the client
+	// This happens for the second time, this time there should be
+	// no binary search.
+	edns := req.IsEdns0()
+	if edns != nil {
+		size := edns.UDPSize()
+		if m.Len() > int(size) {
+			d.trimDNSResponse(cfg, network, req, m)
+		}
+	}
+
 	// Write out the complete response
 	if err := resp.WriteMsg(m); err != nil {
 		d.logger.Warn("failed to respond", "error", err)
