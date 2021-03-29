@@ -72,6 +72,7 @@ type dnsConfig struct {
 	AllowStale      bool
 	Datacenter      string
 	EnableTruncate  bool
+	EmptyOnTruncate bool
 	MaxStale        time.Duration
 	UseCache        bool
 	CacheMaxAge     time.Duration
@@ -150,6 +151,7 @@ func GetDNSConfig(conf *config.RuntimeConfig) (*dnsConfig, error) {
 		ARecordLimit:       conf.DNSARecordLimit,
 		Datacenter:         conf.Datacenter,
 		EnableTruncate:     conf.DNSEnableTruncate,
+		EmptyOnTruncate:    conf.DNSEmptyOnTruncate,
 		MaxStale:           conf.DNSMaxStale,
 		NodeName:           conf.NodeName,
 		NodeTTL:            conf.DNSNodeTTL,
@@ -1166,6 +1168,10 @@ func (d *DNSServer) trimDNSResponse(cfg *dnsConfig, network string, req, resp *d
 	// Flag that there are more records to return in the UDP response
 	if trimmed && cfg.EnableTruncate {
 		resp.Truncated = true
+	}
+	// Return empty response on Truncate if requested in the config
+	if trimmed && cfg.EmptyOnTruncate {
+		resp.Answer = make([]dns.RR, 0)
 	}
 }
 

@@ -249,6 +249,11 @@ type RuntimeConfig struct {
 	// hcl: dns_config { enable_truncate = (true|false) }
 	DNSEnableTruncate bool
 
+	// DNSEmptyOnTruncate is used to send an empty response
+	// when the response is truncated
+	// hcl: dns_config { empty_on_truncate = (true|false) }
+	DNSEmptyOnTruncate bool
+
 	// DNSMaxStale is used to bound how stale of a result is
 	// accepted for a DNS lookup. This can be used with
 	// AllowStale to limit how old of a value is served up.

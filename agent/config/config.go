@@ -594,6 +594,7 @@ type DNS struct {
 	ARecordLimit       *int              `mapstructure:"a_record_limit"`
 	DisableCompression *bool             `mapstructure:"disable_compression"`
 	EnableTruncate     *bool             `mapstructure:"enable_truncate"`
+	EmptyOnTruncate    *bool             `mapstructure:"empty_on_truncate"`
 	MaxStale           *string           `mapstructure:"max_stale"`
 	NodeTTL            *string           `mapstructure:"node_ttl"`
 	OnlyPassing        *bool             `mapstructure:"only_passing"`

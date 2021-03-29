@@ -904,6 +904,7 @@ func (b *builder) Build() (rt RuntimeConfig, err error) {
 		DNSDomain:             stringVal(c.DNSDomain),
 		DNSAltDomain:          altDomain,
 		DNSEnableTruncate:     boolVal(c.DNS.EnableTruncate),
+		DNSEmptyOnTruncate:    boolVal(c.DNS.EmptyOnTruncate),
 		DNSMaxStale:           b.durationVal("dns_config.max_stale", c.DNS.MaxStale),
 		DNSNodeTTL:            b.durationVal("dns_config.node_ttl", c.DNS.NodeTTL),
 		DNSOnlyPassing:        boolVal(c.DNS.OnlyPassing),
