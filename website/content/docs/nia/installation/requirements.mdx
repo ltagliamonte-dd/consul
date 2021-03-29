@@ -20,6 +20,8 @@ Consul-Terraform-Sync is a daemon that runs alongside Consul, similar to other C
 
 To install a local Consul agent, refer to the [Getting Started: Install Consul Tutorial](https://learn.hashicorp.com/tutorials/consul/get-started-install).
 
+For information on compatible Consul versions, refer to the [Consul compatibility matrix](/docs/nia/compatibility#consul).
+
 ### Run an Agent
 
 The Consul agent must be running in order to dynamically update network devices. To run the local Consul agent, you can run Consul in development mode which can be started with `consul agent -dev` for simplicity. For more details on running Consul agent, refer to the [Getting Started: Run the Consul Agent Tutorial](https://learn.hashicorp.com/tutorials/consul/get-started-agent?in=consul/getting-started).
@@ -85,6 +87,14 @@ The modules listed below are available to use and are compatible with Consul-Ter
 
 - Dynamic Load Balancing with Group Member Updates: [Terraform Registry](https://registry.terraform.io/modules/a10networks/service-group-sync-nia/thunder/latest) / [GitHub](https://github.com/a10networks/terraform-thunder-service-group-sync-nia)
 
+#### Avi Networks
+
+- Scale Up and Scale Down Pool and Pool Members (Servers): [GitHub](https://github.com/vmware/terraform-provider-avi/tree/20.1.5/modules/nia/pool)
+
+#### AWS Application Load Balancer (ALB)
+
+- Create Listener Rule and Target Group for an AWS ALB, Forward Traffic to Consul Ingress Gateway: [Terraform Registry](https://registry.terraform.io/modules/aws-quickstart/cts-alb_listener-nia/hashicorp/latest) / [GitHub](https://github.com/aws-quickstart/terraform-hashicorp-cts-alb_listener-nia)
+
 #### Checkpoint
 
 - Dynamic Firewalling with Address Object Updates: [Terraform Registry](https://registry.terraform.io/modules/CheckPointSW/dynobj-nia/checkpoint/latest) / [GitHub](https://github.com/CheckPointSW/terraform-checkpoint-dynobj-nia)
@@ -96,6 +106,10 @@ The modules listed below are available to use and are compatible with Consul-Ter
 #### F5
 
 - Dynamic Load Balancing with Pool Member Updates: [Terraform Registry](https://registry.terraform.io/modules/f5devcentral/app-consul-sync-nia/bigip/latest) / [GitHub](https://github.com/f5devcentral/terraform-bigip-app-consul-sync-nia)
+
+#### NS1
+
+- Create, Delete and Update DNS Records and Zones: [Terraform Registry](https://registry.terraform.io/modules/ns1-terraform/record-sync-nia/ns1/latest) / [GitHub](https://github.com/ns1-terraform/terraform-ns1-record-sync-nia)
 
 #### Palo Alto Networks
 
